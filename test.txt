@@ -1,0 +1,25 @@
+record Message begin
+    string message = "I want to pass compiler only!...";
+end
+function void start() begin
+    /#b
+     # This is a sample program to show you colorful editor
+     #/
+    char specialCharacter = '\t';
+    a = "asdas";
+    //# hello ##/ sdf /# esdfsd #/
+    ## Our compiler support concatenation of string and character!!
+    string name = input();
+    string welcomeString = "Hey " + name + ", Welcome to \'compiler\' course" + '!';
+    string strangeString = "hello\tto\t/\\ll world!";
+    if (2.25 >= 100 and 2E+10 == 2E10 or -2.5E-10 <= 2.5e1) begin println("Wow!");end
+    println("What is decimal format of " + 0xFF + '?');
+    repeat begin
+        println(new Message().message);
+        println("I write " + len("Compiler") + " characters");
+        break;
+       end until (true)
+       string[] finalMessages = new string[1];
+       finalMessages[0] = "Goodbye will happen eventually but try to learn!";
+       for (message in finalMessages) begin println(message); end
+end
