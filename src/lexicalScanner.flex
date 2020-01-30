@@ -57,8 +57,8 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
 %%
 /* lexical rules */
 <YYINITIAL> {
-     \"                             {  yybegin(STRING); string.setLength(0); string.append("\""); }
-    "\'"                            {  System.out.println("going to read some character"); yybegin(CHARACTER); string.setLength(0); string.append("\'"); }
+     \"                             { yybegin(STRING); string.setLength(0); string.append("\""); }
+    "\'"                            { yybegin(CHARACTER); string.setLength(0); string.append("\'"); }
     "("                             { return symbol(new TokenType( Type.Other, "opening_paren")); }
     ")"                             { return symbol(new TokenType( Type.Other, "closing_paren")); }
     "["                             { return symbol(new TokenType( Type.Other, "opening_brace")); }
@@ -130,8 +130,8 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     "input"                         { return symbol(new TokenType( Type.Reserved, "input")); }
 
 
-    "/#"                            { System.err.println("KIR"); yybegin(MULTILINECOMMENT); string.setLength(0); string.append("/#"); System.err.println("SAG");}
-    "##"                            {  System.out.println("1"); yybegin(SINGLELINECOMMENT); System.out.println("1"); string.setLength(0); System.out.println("1"); string.append("##"); }
+    "/#"                            { yybegin(MULTILINECOMMENT); string.setLength(0); string.append("/#"); }
+    "##"                            { yybegin(SINGLELINECOMMENT); string.setLength(0); string.append("##"); }
 
     {Identifier}                    { return symbol(new TokenType( Type.Identifier, "identifier")); }
     {DecIntegerLiteral}             { return symbol(new TokenType( Type.Integer, "int_const")); }
@@ -156,17 +156,17 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
 
 <MULTILINECOMMENT> {
     "#/"                            {yybegin(YYINITIAL);  string.append("/#"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "MULTI_LINE_COMMENT"), temp.toString() ); }
-    .                         {String ss = yytext(); System.err.println(ss); string.append( ss ); }
-    {WhiteSpace}                   { string.append( yytext() ); }
+    .                               { string.append( yytext() ); }
+    {WhiteSpace}                    { string.append( yytext() ); }
 }
 
 <SINGLELINECOMMENT> {
-    {LineTerminator}                { System.out.println("1"); yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "SINGLE_LINE_COMMENT"), temp.toString() ); }
+    {LineTerminator}                { yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "SINGLE_LINE_COMMENT"), temp.toString() ); }
     {StringCharacter}+              { string.append( yytext() ); }
     {Blank}+                        { string.append( yytext() ); }
 }
 
 <CHARACTER> {
-    \'                            {yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() ); }
-    {CharCharacter}\'               { System.err.println("matched "); string.append( yytext() ); yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() ); }
+    \'                              { yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() ); }
+    {CharCharacter}\'               { string.append( yytext() ); yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() ); }
 }
