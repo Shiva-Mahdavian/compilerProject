@@ -85,6 +85,7 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     "-="                            { return symbol(new TokenType( Type.Other, "subtraction_assignment")); }
     "*="                            { return symbol(new TokenType( Type.Other, "multiplication_assignment")); }
     "/="                            { return symbol(new TokenType( Type.Other, "division_assignment")); }
+    "%="                            { return symbol(new TokenType( Type.Other, "mod_assignment")); }
     "begin"                         { return symbol(new TokenType( Type.Reserved, "opening_block")); }
     "end"                           { return symbol(new TokenType( Type.Reserved, "closing_block")); }
     "."                             { return symbol(new TokenType( Type.Other, "dot")); }
@@ -133,7 +134,7 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     "/#"                            { yybegin(MULTILINECOMMENT); string.setLength(0); string.append("/#"); }
     "##"                            { yybegin(SINGLELINECOMMENT); string.setLength(0); string.append("##"); }
 
-    {Identifier}                    { return symbol(new TokenType( Type.Identifier, "identifier")); }
+    {Identifier}                    { return symbol(new TokenType( Type.Identifier, "id")); }
     {DecIntegerLiteral}             { return symbol(new TokenType( Type.Integer, "int_const")); }
     {DecLongLiteral}                { return symbol(new TokenType( Type.Integer, "long_int_const")); }
     {DoubleLiteral}                 { return symbol(new TokenType( Type.Real, "double_const")); }
