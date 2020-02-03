@@ -1076,17 +1076,17 @@ class LexicalScanner {
             // fall through
           case 115: break;
           case 28: 
-            { yybegin(YYINITIAL);  string.append("\""); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.String, "STRING_CONST"), temp.toString() );
+            { yybegin(YYINITIAL);  string.append("\""); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.String, "string_const"), temp.toString() );
             } 
             // fall through
           case 116: break;
           case 29: 
-            { yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() );
+            { yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "char_const"), temp.toString() );
             } 
             // fall through
           case 117: break;
           case 30: 
-            { yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "SINGLE_LINE_COMMENT"), temp.toString() );
+            { yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "single_line_comment"), temp.toString() );
             } 
             // fall through
           case 118: break;
@@ -1196,7 +1196,7 @@ class LexicalScanner {
             // fall through
           case 139: break;
           case 52: 
-            { yybegin(YYINITIAL);  string.append("/#"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "MULTI_LINE_COMMENT"), temp.toString() );
+            { yybegin(YYINITIAL);  string.append("/#"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "mullti_line_comment"), temp.toString() );
             } 
             // fall through
           case 140: break;

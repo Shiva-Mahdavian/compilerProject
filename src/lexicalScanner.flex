@@ -151,23 +151,23 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
 }
 
 <STRING> {
-    \"                              {yybegin(YYINITIAL);  string.append("\""); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.String, "STRING_CONST"), temp.toString() ); }
+    \"                              {yybegin(YYINITIAL);  string.append("\""); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.String, "string_const"), temp.toString() ); }
     {StringCharacter}+              { string.append( yytext() ); }
 }
 
 <MULTILINECOMMENT> {
-    "#/"                            {yybegin(YYINITIAL);  string.append("/#"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "MULTI_LINE_COMMENT"), temp.toString() ); }
+    "#/"                            {yybegin(YYINITIAL);  string.append("/#"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "mullti_line_comment"), temp.toString() ); }
     .                               { string.append( yytext() ); }
     {WhiteSpace}                    { string.append( yytext() ); }
 }
 
 <SINGLELINECOMMENT> {
-    {LineTerminator}                { yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "SINGLE_LINE_COMMENT"), temp.toString() ); }
+    {LineTerminator}                { yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "single_line_comment"), temp.toString() ); }
     {StringCharacter}+              { string.append( yytext() ); }
     {Blank}+                        { string.append( yytext() ); }
 }
 
 <CHARACTER> {
-    \'                              { yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() ); }
+    \'                              { yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "char_const"), temp.toString() ); }
     {CharCharacter}\'               { string.append( yytext() ); yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() ); }
 }
