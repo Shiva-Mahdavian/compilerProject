@@ -1,7 +1,7 @@
 import ast.expression.Expression;
 import ast.expression.binary.*;
 import ast.expression.constant.*;
-import ast.expression.unary.Negative;
+import ast.expression.unary.*;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -36,11 +36,9 @@ public class CodeGenerator {
                 semanticStack.push(new FloatConst((String) lexical.currentToken().getValue()));
                 break;
             case "pushIntegerConst":
-                System.out.println("pushing integer!!!");
                 semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue(), RADIX_DECIMAL));
                 break;
             case "pushIntegerHexConst":
-                System.out.println("pushing hex integer!!!");
                 semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue(), RADIX_HEX));
                 break;
             case "pushDoubleConst":
@@ -79,6 +77,31 @@ public class CodeGenerator {
             case "exprNeg": {
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new Negative(first));
+            }
+            break;
+            case "exprPos": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new Positive(first));
+            }
+            break;
+            case "exprPreDecrement": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new PreDecrement(first));
+            }
+            break;
+            case "exprPostDecrement": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new PostDecrement(first));
+            }
+            break;
+            case "exprPreIncrement": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new PreIncrement(first));
+            }
+            break;
+            case "exprPostIncrement": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new PostIncrement(first));
             }
             break;
             default:

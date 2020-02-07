@@ -107,8 +107,8 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     ","                             { return symbol(new TokenType( Type.Other, "comma")); }
     ":"                             { return symbol(new TokenType( Type.Other, "colon")); }
     ";"                             { return symbol(new TokenType( Type.Other, "semicolon")); }
-    "++"                            { return symbol(new TokenType( Type.Other, "p_increament")); }
-    "--"                            { return symbol(new TokenType( Type.Other, "p_decreament")); }
+    "++"                            { return symbol(new TokenType( Type.Other, "p_increment")); }
+    "--"                            { return symbol(new TokenType( Type.Other, "p_decrement")); }
 
 
     "function"                      { return symbol(new TokenType( Type.Reserved, "function")); }

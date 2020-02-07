@@ -9,6 +9,7 @@ public class PreIncrement extends UnaryExpression {
 
     @Override
     public void codegen() {
+        getOperand().codegen();
         System.out.println("preIncrement");
     }
 }

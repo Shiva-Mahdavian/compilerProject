@@ -1124,7 +1124,7 @@ class LexicalScanner implements Lexical {
             // fall through
           case 122: break;
           case 34: 
-            { return symbol(new TokenType( Type.Other, "p_decreament"));
+            { return symbol(new TokenType( Type.Other, "p_decrement"));
             } 
             // fall through
           case 123: break;
@@ -1134,7 +1134,7 @@ class LexicalScanner implements Lexical {
             // fall through
           case 124: break;
           case 36: 
-            { return symbol(new TokenType( Type.Other, "p_increament"));
+            { return symbol(new TokenType( Type.Other, "p_increment"));
             } 
             // fall through
           case 125: break;

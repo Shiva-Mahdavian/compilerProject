@@ -10,6 +10,7 @@ public class PostDecrement extends UnaryExpression  {
 
     @Override
     public void codegen() {
+        getOperand().codegen();
         System.out.println("postDecrement");
     }
 }

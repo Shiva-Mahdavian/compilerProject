@@ -10,6 +10,7 @@ public class PreDecrement extends UnaryExpression {
 
     @Override
     public void codegen() {
+        getOperand().codegen();
         System.out.println("preDecrement");
     }
 }
