@@ -1,4 +1,12 @@
 package ast.statement.loop;
 
-public class For {
+import ast.statement.Statement;
+
+public class For implements Statement {
+    private
+
+    @Override
+    public void codegen() {
+
+    }
 }
