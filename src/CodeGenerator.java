@@ -1,15 +1,14 @@
 import ast.expression.Expression;
 import ast.expression.binary.*;
-import ast.expression.constant.DoubleConst;
-import ast.expression.constant.FloatConst;
-import ast.expression.constant.IntegerConst;
-import ast.expression.constant.LongConst;
+import ast.expression.constant.*;
 import ast.expression.unary.Negative;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class CodeGenerator {
+    public static final int RADIX_HEX = 16;
+    public static final int RADIX_DECIMAL = 10;
     private Lexical lexical;
     private Deque<Object> semanticStack;
 
@@ -24,15 +23,25 @@ public class CodeGenerator {
 
     public void doSemantic(String sem) {
         switch (sem) {
+            case "pushBooleanConst":
+                semanticStack.push(new BoolConst((String) lexical.currentToken().getValue()));
+                break;
             case "pushLongConst":
-                semanticStack.push(new LongConst((String) lexical.currentToken().getValue()));
+                semanticStack.push(new LongConst((String) lexical.currentToken().getValue(), RADIX_DECIMAL));
+                break;
+            case "pushLongHexConst":
+                semanticStack.push(new LongConst((String) lexical.currentToken().getValue(), RADIX_HEX));
                 break;
             case "pushFloatConst":
                 semanticStack.push(new FloatConst((String) lexical.currentToken().getValue()));
                 break;
             case "pushIntegerConst":
                 System.out.println("pushing integer!!!");
-                semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue()));
+                semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue(), RADIX_DECIMAL));
+                break;
+            case "pushIntegerHexConst":
+                System.out.println("pushing hex integer!!!");
+                semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue(), RADIX_HEX));
                 break;
             case "pushDoubleConst":
                 semanticStack.push(new DoubleConst((String) lexical.currentToken().getValue()));
@@ -56,7 +65,6 @@ public class CodeGenerator {
             }
             break;
             case "exprMultiply": {
-                System.out.println("got a exprMultiply");
                 Expression second = (Expression) semanticStack.pop();
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new Multiply(first, second));

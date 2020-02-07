@@ -6,8 +6,10 @@ import ast.expression.Expression;
 public class IntegerConst implements Expression {
     private int value;
 
-    public IntegerConst(String value) {
-        this.value = Integer.parseInt(value);
+    public IntegerConst(String value, int radix) {
+        if (radix == 16)
+            value = value.substring(2, value.length());
+        this.value = Integer.parseInt(value, radix);
     }
 
     @Override

@@ -1,6 +1,18 @@
 int test1 = 5 * 3;
-float koof = 3.5;
+float ftest1 = 3.5;
+float ftest2 = 3.5f;
+float ftest3 = 3.5F;
 int test2;
+long ltest1 = 3434L;
+long ltest2 = 3434l;
+double dtest1;
+int hitest1 = 0xfff;
+long hltest1 = 0xfffL;
+long hltest2 = 0xfffl;
+int hitest2 = 0Xfff;
+bool btest1 = true;
+bool btest2 = false;
+
 
 function void start()
 begin
@@ -9,3 +21,13 @@ begin
     int test4;
     test4 = 7;
 end
+
+
+int test2;
+long ltest1 = 3434L;
+long ltest2 = 3434l;
+double dtest1;
+int hitest1 = 0xfff;
+long hltest1 = 0xfffL;
+long hltest2 = 0xfffl;
+int hitest2 = 0Xfff;

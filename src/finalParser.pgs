@@ -546,7 +546,7 @@
     "start": 24
   },
   {
-    "name": "EXPRESSION_",
+    "name": "EXPRESSION",
     "nodes": [
       {
         "x": 143.0,
@@ -1458,7 +1458,7 @@
     "start": 64
   },
   {
-    "name": "EXPRESSION",
+    "name": "EXPRESSION__",
     "nodes": [
       {
         "x": 232.0,
@@ -1483,7 +1483,7 @@
       {
         "start": 66,
         "end": 67,
-        "token": "EXPRESSION_",
+        "token": "EXPRESSION",
         "func": "",
         "anchorX": 285.0,
         "anchorY": 364.5,
@@ -1503,7 +1503,7 @@
       {
         "start": 68,
         "end": 67,
-        "token": "EXPRESSION_",
+        "token": "EXPRESSION",
         "func": "",
         "anchorX": 574.5,
         "anchorY": 248.0,
@@ -1938,7 +1938,7 @@
         "start": 89,
         "end": 90,
         "token": "true",
-        "func": "",
+        "func": "pushBooleanConst",
         "anchorX": 438.0,
         "anchorY": 631.0,
         "isGraph": false,
@@ -1948,7 +1948,7 @@
         "start": 89,
         "end": 90,
         "token": "false",
-        "func": "",
+        "func": "pushBooleanConst",
         "anchorX": 438.0,
         "anchorY": 592.0,
         "isGraph": false,
@@ -1998,7 +1998,7 @@
         "start": 89,
         "end": 90,
         "token": "hex_integer",
-        "func": "pushIntegerConst",
+        "func": "pushIntegerHexConst",
         "anchorX": 434.0,
         "anchorY": 408.0,
         "isGraph": false,
@@ -2008,7 +2008,7 @@
         "start": 89,
         "end": 90,
         "token": "long_hex_integer",
-        "func": "pushLongConst",
+        "func": "pushLongHexConst",
         "anchorX": 435.0,
         "anchorY": 377.0,
         "isGraph": false,
