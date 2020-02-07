@@ -28,21 +28,23 @@ public class Start implements ProgramPart {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         mv = cw.visitMethod(Opcodes.ACC_STATIC | Opcodes.ACC_PUBLIC,
                 "main", "([Ljava/lang/String;)V", null, null);
         mv.visitCode();
         Label start = new Label();
         mv.visitLabel(start);
         Label end = new Label();
-        mv.visitLineNumber(15, end);
-        //mv.visitLabel(end);
+//        mv.visitLineNumber(15, end);
+        mv.visitLabel(end);
         for (BlockPart bp : blockParts) {
             if (bp instanceof LocalVarDCL)
                 ((LocalVarDCL) bp).set(numOfVar++, start, end);
             bp.codegen(cw, mv);
         }
-        //mv.visitMaxs(20, 20);
-        //mv.visitEnd();
+        mv.visitMaxs(20, 20);
+        mv.visitInsn(Opcodes.RETURN);
+//        mv.visitMaxs(0, 0);
+        mv.visitEnd();
     }
 }

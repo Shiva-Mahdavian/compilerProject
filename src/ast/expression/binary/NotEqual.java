@@ -10,7 +10,7 @@ public class NotEqual extends BinaryExpression {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         System.out.println("Not equal");
         getFirstOperand().codegen(cw, mv);
         getSecondOperand().codegen(cw, mv);

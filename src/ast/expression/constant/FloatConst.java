@@ -12,7 +12,8 @@ public class FloatConst implements Expression {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception  {
         System.out.println("Float const value " + value);
+        mv.visitLdcInsn(value);
     }
 }

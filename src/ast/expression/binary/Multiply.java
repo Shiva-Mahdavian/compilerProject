@@ -12,7 +12,7 @@ public class Multiply extends BinaryExpression {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         System.out.println("multiply");
         getFirstOperand().codegen(cw, mv);
         getSecondOperand().codegen(cw, mv);

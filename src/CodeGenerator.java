@@ -3,12 +3,14 @@ import ast.BlockPart;
 import ast.Program;
 import ast.Start;
 import ast.expression.Expression;
+import ast.expression.SizeOf;
 import ast.expression.binary.*;
 import ast.expression.constant.*;
 import ast.expression.unary.*;
 import ast.statement.assignment.Assignment;
 import ast.statement.loop.For;
 import ast.varDCL.LocalVarDCL;
+import ast.varDCL.VarDCLWithValue;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -242,6 +244,19 @@ public class CodeGenerator {
                 String varType = (String) semanticStack.pop();
                 semanticStack.push(new LocalVarDCL(varType, varName));
                 semanticStack.push(varType);
+            }
+            break;
+            case "computeSizeOf": {
+                System.out.println("in sizeof");
+                String varType = (String) semanticStack.pop();
+                semanticStack.push(new SizeOf(varType));
+            }
+            break;
+            case "AddValueToCreatedVar": {
+                System.out.println("add val to var dcl");
+                Expression varValue = (Expression) semanticStack.pop();
+                LocalVarDCL localVar = (LocalVarDCL) semanticStack.pop();
+                semanticStack.push(new VarDCLWithValue(localVar, varValue));
             }
             break;
             default:

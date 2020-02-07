@@ -11,7 +11,7 @@ public class LogicalOr extends BinaryExpression {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         System.out.println("logical or");
         getFirstOperand().codegen(cw, mv);
         getSecondOperand().codegen(cw, mv);

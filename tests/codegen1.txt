@@ -1,4 +1,4 @@
 function void start()
 begin
-    int a, a2, a4;
+    int a = sizeof(int);
 end

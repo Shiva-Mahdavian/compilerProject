@@ -51,6 +51,8 @@ public class Main {
 
             result.codegen(classWriter, methodVisitor);
 
+            classWriter.visitEnd();
+
             try {
                 fos.write(classWriter.toByteArray());
             } catch (IOException e) {

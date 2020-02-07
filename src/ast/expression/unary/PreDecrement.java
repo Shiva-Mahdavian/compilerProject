@@ -11,7 +11,7 @@ public class PreDecrement extends UnaryExpression {
 
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         System.out.println("preDecrement");
         getOperand().codegen(cw, mv);
     }

@@ -12,7 +12,7 @@ public class Negative extends UnaryExpression {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         System.out.println("negative");
         getOperand().codegen(cw, mv);
     }

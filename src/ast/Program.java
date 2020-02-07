@@ -22,7 +22,7 @@ public class Program implements AST {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception {
         if (start == null) {
             System.err.println("no start method found");
             return;

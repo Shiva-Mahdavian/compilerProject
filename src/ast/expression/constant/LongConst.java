@@ -18,7 +18,8 @@ public class LongConst implements Expression {
     }
 
     @Override
-    public void codegen(ClassWriter cw, MethodVisitor mv) {
+    public void codegen(ClassWriter cw, MethodVisitor mv) throws Exception  {
         System.out.println("long const value " + value);
+        mv.visitLdcInsn(value);
     }
 }
