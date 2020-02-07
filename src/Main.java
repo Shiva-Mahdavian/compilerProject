@@ -1,3 +1,4 @@
+import ast.AST;
 import ast.expression.Expression;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
@@ -26,7 +27,7 @@ public class Main {
             // Parse given file
             parser.parse();
             // Get Root of AST
-            Expression result = codeGenerator.getResult();
+            AST result = codeGenerator.getResult();
             // Call AST Root function
 //
 

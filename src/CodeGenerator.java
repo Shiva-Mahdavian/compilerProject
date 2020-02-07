@@ -1,3 +1,4 @@
+import ast.AST;
 import ast.BlockPart;
 import ast.Program;
 import ast.Start;
@@ -25,8 +26,8 @@ public class CodeGenerator {
         semanticStack.push(program);
     }
 
-    public Expression getResult() {
-        return (Expression) semanticStack.getFirst();
+    public AST getResult() {
+        return (AST) semanticStack.getFirst();
     }
 
     public void doSemantic(String sem) {
