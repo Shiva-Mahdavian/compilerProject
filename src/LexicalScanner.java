@@ -8,7 +8,7 @@ import java.io.IOException;
  * <a href="http://www.jflex.de/">JFlex</a> 1.7.0
  * from the specification file <tt>/home/shiva/Desktop/compiler/CompilerProject/src/lexicalScanner.flex</tt>
  */
-class LexicalScanner {
+class LexicalScanner implements Lexical {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -68,16 +68,16 @@ class LexicalScanner {
     "\1\54\1\55\4\4\1\56\1\57\5\4\1\60\1\61"+
     "\17\4\1\62\1\63\1\64\2\65\1\66\1\0\1\67"+
     "\1\70\4\4\1\71\6\4\1\72\1\4\1\73\2\4"+
-    "\1\74\13\4\1\75\1\4\1\76\1\65\3\4\1\77"+
+    "\1\74\14\4\1\75\1\4\1\76\1\65\3\4\1\77"+
     "\1\100\3\4\1\101\1\4\1\102\6\4\1\103\1\4"+
-    "\1\104\1\105\3\4\1\106\1\4\1\65\5\4\1\107"+
-    "\1\110\1\111\1\112\2\4\1\113\1\114\1\115\4\4"+
-    "\1\65\1\116\1\117\1\120\1\121\3\4\1\122\1\123"+
-    "\1\124\1\4\1\65\1\125\1\126\1\4\1\127\1\65"+
-    "\1\130\2\65\10\0";
+    "\1\104\1\105\4\4\1\106\1\4\1\65\5\4\1\107"+
+    "\1\110\1\111\1\112\2\4\1\113\1\114\1\115\1\4"+
+    "\1\116\3\4\1\65\1\117\1\120\1\121\1\122\3\4"+
+    "\1\123\1\124\1\125\1\4\1\65\1\126\1\127\1\4"+
+    "\1\130\1\65\1\131\2\65\10\0";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[225];
+    int [] result = new int[228];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -120,20 +120,20 @@ class LexicalScanner {
     "\0\u1270\0\u12ab\0\u12e6\0\u0213\0\u1321\0\u135c\0\u1397\0\u13d2"+
     "\0\u140d\0\u1448\0\u0213\0\u1483\0\u0213\0\u14be\0\u14f9\0\u1534"+
     "\0\u156f\0\u15aa\0\u15e5\0\u1620\0\u165b\0\u1696\0\u16d1\0\u170c"+
-    "\0\u1747\0\u1782\0\u17bd\0\u0213\0\u17f8\0\u0127\0\u1833\0\u186e"+
-    "\0\u18a9\0\u18e4\0\u0213\0\u0213\0\u191f\0\u195a\0\u1995\0\u0213"+
-    "\0\u19d0\0\u0213\0\u1a0b\0\u1a46\0\u1a81\0\u1abc\0\u1af7\0\u1b32"+
-    "\0\u0213\0\u1b6d\0\u0213\0\u0213\0\u1ba8\0\u1be3\0\u1c1e\0\u0213"+
-    "\0\u1c59\0\u1c94\0\u1ccf\0\u1d0a\0\u1d45\0\u1d80\0\u1dbb\0\u0213"+
-    "\0\u0213\0\u0213\0\u0213\0\u1df6\0\u1e31\0\u0213\0\u0213\0\u0213"+
-    "\0\u1e6c\0\u1ea7\0\u1ee2\0\u1f1d\0\u1f58\0\u0213\0\u0213\0\u0213"+
-    "\0\u0213\0\u1f93\0\u1fce\0\u2009\0\u0213\0\u0213\0\u0213\0\u2044"+
-    "\0\u207f\0\u0213\0\u0213\0\u20ba\0\u0213\0\u20f5\0\u0213\0\u2130"+
-    "\0\u216b\0\u21a6\0\u21e1\0\u221c\0\u2257\0\u2292\0\u22cd\0\u2308"+
-    "\0\u2343";
+    "\0\u1747\0\u1782\0\u17bd\0\u17f8\0\u0213\0\u1833\0\u0127\0\u186e"+
+    "\0\u18a9\0\u18e4\0\u191f\0\u0213\0\u0213\0\u195a\0\u1995\0\u19d0"+
+    "\0\u0213\0\u1a0b\0\u0213\0\u1a46\0\u1a81\0\u1abc\0\u1af7\0\u1b32"+
+    "\0\u1b6d\0\u0213\0\u1ba8\0\u0213\0\u0213\0\u1be3\0\u1c1e\0\u1c59"+
+    "\0\u1c94\0\u0213\0\u1ccf\0\u1d0a\0\u1d45\0\u1d80\0\u1dbb\0\u1df6"+
+    "\0\u1e31\0\u0213\0\u0213\0\u0213\0\u0213\0\u1e6c\0\u1ea7\0\u0213"+
+    "\0\u0213\0\u0213\0\u1ee2\0\u0213\0\u1f1d\0\u1f58\0\u1f93\0\u1fce"+
+    "\0\u0213\0\u0213\0\u0213\0\u0213\0\u2009\0\u2044\0\u207f\0\u0213"+
+    "\0\u0213\0\u0213\0\u20ba\0\u20f5\0\u0213\0\u0213\0\u2130\0\u0213"+
+    "\0\u216b\0\u0213\0\u21a6\0\u21e1\0\u221c\0\u2257\0\u2292\0\u22cd"+
+    "\0\u2308\0\u2343\0\u237e\0\u23b9";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[225];
+    int [] result = new int[228];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -262,171 +262,175 @@ class LexicalScanner {
     "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
     "\2\0\3\12\1\217\3\0\13\12\6\0\3\12\1\0"+
     "\4\12\1\0\1\12\3\0\1\12\1\220\1\12\16\0"+
-    "\3\12\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
-    "\4\12\3\0\12\12\1\221\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\3\12\16\0\3\12\2\0\3\12"+
-    "\1\222\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\1\223\2\12\16\0\3\12\2\0\4\12"+
-    "\3\0\13\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\1\224\2\12\16\0\3\12\2\0\4\12\3\0"+
-    "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
-    "\3\12\16\0\3\12\2\0\3\12\1\225\3\0\13\12"+
-    "\6\0\1\162\1\163\1\226\1\0\1\163\1\0\2\163"+
-    "\26\0\2\163\3\0\2\163\5\0\1\163\1\0\1\163"+
-    "\3\0\1\226\12\0\2\227\1\226\1\0\1\227\1\0"+
-    "\2\227\26\0\2\227\3\0\2\227\5\0\1\227\1\0"+
-    "\1\227\3\0\1\226\12\0\2\164\71\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
-    "\4\12\3\0\1\12\1\230\11\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\3\12\16\0\2\12\1\231"+
-    "\2\0\4\12\3\0\13\12\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\3\12\16\0\3\12\2\0\1\12"+
-    "\1\232\2\12\3\0\13\12\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\3\12\16\0\3\12\2\0\1\12"+
-    "\1\233\2\12\3\0\13\12\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\3\12\16\0\2\12\1\234\2\0"+
-    "\4\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\3\12\16\0\3\12\2\0\1\235\3\12"+
-    "\3\0\13\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\3\12\16\0\1\236\2\12\2\0\4\12\3\0"+
-    "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
-    "\3\12\16\0\1\237\2\12\2\0\4\12\3\0\13\12"+
-    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\4\12\3\0\6\12\1\240\4\12"+
-    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\3\12\1\241\3\0\13\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\1\12\1\242\2\12\3\0\13\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\4\12\3\0\1\12\1\243\11\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\4\12\3\0\4\12\1\244\6\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\1\12\1\245\2\12\3\0\13\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\4\12\3\0\2\12\1\246\10\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\1\247\2\12\2\0\4\12\3\0\13\12\6\0\3\12"+
+    "\1\221\2\12\2\0\4\12\3\0\13\12\6\0\3\12"+
     "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
-    "\2\0\3\12\1\250\3\0\13\12\6\0\3\12\1\0"+
+    "\2\0\4\12\3\0\12\12\1\222\6\0\3\12\1\0"+
     "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
-    "\1\12\1\251\2\12\3\0\13\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
-    "\4\12\3\0\4\12\1\252\6\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\1\12\1\253\1\12\16\0"+
-    "\3\12\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\3\12\16\0\1\12\1\254"+
-    "\1\12\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
-    "\3\12\1\255\3\0\13\12\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\3\12\16\0\3\12\2\0\1\12"+
-    "\1\256\2\12\3\0\13\12\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\2\12\1\257\16\0\3\12\2\0"+
+    "\3\12\1\223\3\0\13\12\6\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\1\224\2\12\16\0\3\12\2\0"+
     "\4\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\3\12\16\0\3\12\2\0\2\12\1\260"+
-    "\1\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\1\261\2\12\16\0\3\12\2\0\4\12"+
-    "\3\0\13\12\6\0\2\262\1\226\1\0\1\262\1\0"+
-    "\2\262\26\0\2\262\3\0\2\262\5\0\1\262\1\0"+
-    "\1\262\3\0\1\226\12\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\1\12\1\263\1\12\16\0\3\12\2\0"+
-    "\4\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\1\12\1\264\1\12\16\0\3\12\2\0"+
-    "\4\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\3\12\16\0\1\265\2\12\2\0\4\12"+
+    "\1\12\3\0\1\225\2\12\16\0\3\12\2\0\4\12"+
     "\3\0\13\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\3\12\16\0\3\12\2\0\4\12\3\0\6\12"+
-    "\1\266\4\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\3\12\16\0\3\12\2\0\4\12\3\0\1\12"+
-    "\1\267\11\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\3\12\16\0\3\12\2\0\4\12\3\0\5\12"+
-    "\1\270\5\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\1\271\2\12\16\0\3\12\2\0\4\12\3\0"+
+    "\3\0\3\12\16\0\3\12\2\0\3\12\1\226\3\0"+
+    "\13\12\6\0\1\162\1\163\1\227\1\0\1\163\1\0"+
+    "\2\163\26\0\2\163\3\0\2\163\5\0\1\163\1\0"+
+    "\1\163\3\0\1\227\12\0\2\230\1\227\1\0\1\230"+
+    "\1\0\2\230\26\0\2\230\3\0\2\230\5\0\1\230"+
+    "\1\0\1\230\3\0\1\227\12\0\2\164\71\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
+    "\2\0\4\12\3\0\1\12\1\231\11\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\2\12"+
+    "\1\232\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
+    "\1\12\1\233\2\12\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
+    "\1\12\1\234\2\12\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\3\12\16\0\2\12\1\235"+
+    "\2\0\4\12\3\0\13\12\6\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\3\12\16\0\3\12\2\0\1\236"+
+    "\3\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
+    "\1\12\3\0\3\12\16\0\1\237\2\12\2\0\4\12"+
+    "\3\0\13\12\6\0\3\12\1\0\4\12\1\0\1\12"+
+    "\3\0\3\12\16\0\1\240\2\12\2\0\4\12\3\0"+
     "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
-    "\2\12\1\272\16\0\3\12\2\0\4\12\3\0\13\12"+
+    "\3\12\16\0\3\12\2\0\4\12\3\0\6\12\1\241"+
+    "\4\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
+    "\3\12\16\0\3\12\2\0\3\12\1\242\3\0\13\12"+
     "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\1\12\1\273\2\12\3\0\13\12"+
+    "\16\0\3\12\2\0\1\12\1\243\2\12\3\0\13\12"+
     "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\1\274\2\12\2\0\4\12\3\0\13\12\6\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\2\12\1\275"+
+    "\16\0\3\12\2\0\4\12\3\0\1\12\1\244\11\12"+
+    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
+    "\16\0\3\12\2\0\4\12\3\0\4\12\1\245\6\12"+
+    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
+    "\16\0\3\12\2\0\1\12\1\246\2\12\3\0\13\12"+
+    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
+    "\16\0\3\12\2\0\4\12\3\0\2\12\1\247\10\12"+
+    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
+    "\16\0\1\250\2\12\2\0\4\12\3\0\13\12\6\0"+
+    "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
+    "\3\12\2\0\3\12\1\251\3\0\13\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
+    "\2\0\1\12\1\252\2\12\3\0\13\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
+    "\2\0\4\12\3\0\4\12\1\253\6\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\1\12\1\254\1\12"+
     "\16\0\3\12\2\0\4\12\3\0\13\12\6\0\3\12"+
-    "\1\0\4\12\1\0\1\12\3\0\2\12\1\276\16\0"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\1\12"+
+    "\1\255\1\12\2\0\4\12\3\0\13\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
+    "\2\0\3\12\1\256\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\1\12\1\257\1\12\16\0"+
     "\3\12\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
     "\4\12\1\0\1\12\3\0\3\12\16\0\3\12\2\0"+
-    "\4\12\3\0\6\12\1\277\4\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\2\12\1\300\16\0\3\12"+
+    "\1\12\1\260\2\12\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\2\12\1\261\16\0\3\12"+
     "\2\0\4\12\3\0\13\12\6\0\3\12\1\0\4\12"+
-    "\1\0\1\12\3\0\1\301\2\12\16\0\3\12\2\0"+
+    "\1\0\1\12\3\0\3\12\16\0\3\12\2\0\2\12"+
+    "\1\262\1\12\3\0\13\12\6\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\1\263\2\12\16\0\3\12\2\0"+
+    "\4\12\3\0\13\12\6\0\2\264\1\227\1\0\1\264"+
+    "\1\0\2\264\26\0\2\264\3\0\2\264\5\0\1\264"+
+    "\1\0\1\264\3\0\1\227\12\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\1\12\1\265\1\12\16\0\3\12"+
+    "\2\0\4\12\3\0\13\12\6\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\1\12\1\266\1\12\16\0\3\12"+
+    "\2\0\4\12\3\0\13\12\6\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\3\12\16\0\1\267\2\12\2\0"+
     "\4\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
-    "\1\12\3\0\3\12\16\0\2\12\1\302\2\0\4\12"+
+    "\1\12\3\0\3\12\16\0\3\12\2\0\4\12\3\0"+
+    "\6\12\1\270\4\12\6\0\3\12\1\0\4\12\1\0"+
+    "\1\12\3\0\3\12\16\0\3\12\2\0\4\12\3\0"+
+    "\1\12\1\271\11\12\6\0\3\12\1\0\4\12\1\0"+
+    "\1\12\3\0\3\12\16\0\3\12\2\0\4\12\3\0"+
+    "\5\12\1\272\5\12\6\0\3\12\1\0\4\12\1\0"+
+    "\1\12\3\0\1\273\2\12\16\0\3\12\2\0\4\12"+
+    "\3\0\13\12\6\0\3\12\1\0\4\12\1\0\1\12"+
+    "\3\0\2\12\1\274\16\0\3\12\2\0\4\12\3\0"+
+    "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
+    "\3\12\16\0\3\12\2\0\1\12\1\275\2\12\3\0"+
+    "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
+    "\3\12\16\0\1\276\2\12\2\0\4\12\3\0\13\12"+
+    "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\2\12"+
+    "\1\277\16\0\3\12\2\0\4\12\3\0\13\12\6\0"+
+    "\3\12\1\0\4\12\1\0\1\12\3\0\2\12\1\300"+
+    "\16\0\3\12\2\0\4\12\3\0\13\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
+    "\2\0\4\12\3\0\6\12\1\301\4\12\6\0\3\12"+
+    "\1\0\4\12\1\0\1\12\3\0\2\12\1\302\16\0"+
+    "\3\12\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\1\303\2\12\16\0\3\12"+
+    "\2\0\4\12\3\0\13\12\6\0\3\12\1\0\4\12"+
+    "\1\0\1\12\3\0\2\12\1\304\16\0\3\12\2\0"+
+    "\4\12\3\0\13\12\6\0\3\12\1\0\4\12\1\0"+
+    "\1\12\3\0\3\12\16\0\2\12\1\305\2\0\4\12"+
     "\3\0\13\12\6\0\3\12\1\0\4\12\1\0\1\12"+
     "\3\0\3\12\16\0\3\12\2\0\4\12\3\0\2\12"+
-    "\1\303\10\12\6\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\2\12\1\304\16\0\3\12\2\0\4\12\3\0"+
-    "\13\12\6\0\2\305\1\226\1\0\1\305\1\0\2\305"+
-    "\26\0\2\305\3\0\2\305\5\0\1\305\1\0\1\305"+
-    "\3\0\1\226\12\0\3\12\1\0\4\12\1\0\1\12"+
-    "\3\0\1\306\2\12\16\0\3\12\2\0\4\12\3\0"+
+    "\1\306\10\12\6\0\3\12\1\0\4\12\1\0\1\12"+
+    "\3\0\2\12\1\307\16\0\3\12\2\0\4\12\3\0"+
+    "\13\12\6\0\2\310\1\227\1\0\1\310\1\0\2\310"+
+    "\26\0\2\310\3\0\2\310\5\0\1\310\1\0\1\310"+
+    "\3\0\1\227\12\0\3\12\1\0\4\12\1\0\1\12"+
+    "\3\0\1\311\2\12\16\0\3\12\2\0\4\12\3\0"+
     "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
-    "\3\12\16\0\1\12\1\307\1\12\2\0\4\12\3\0"+
+    "\3\12\16\0\1\12\1\312\1\12\2\0\4\12\3\0"+
     "\13\12\6\0\3\12\1\0\4\12\1\0\1\12\3\0"+
-    "\2\12\1\310\16\0\3\12\2\0\4\12\3\0\13\12"+
+    "\2\12\1\313\16\0\3\12\2\0\4\12\3\0\13\12"+
     "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\1\12\1\311\2\12\3\0\13\12"+
+    "\16\0\3\12\2\0\1\12\1\314\2\12\3\0\13\12"+
     "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\4\12\3\0\6\12\1\312\4\12"+
+    "\16\0\3\12\2\0\4\12\3\0\6\12\1\315\4\12"+
     "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\4\12\3\0\2\12\1\313\10\12"+
+    "\16\0\3\12\2\0\4\12\3\0\2\12\1\316\10\12"+
     "\6\0\3\12\1\0\4\12\1\0\1\12\3\0\3\12"+
-    "\16\0\3\12\2\0\3\12\1\314\3\0\13\12\6\0"+
+    "\16\0\3\12\2\0\3\12\1\317\3\0\13\12\6\0"+
     "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\2\12\1\315\1\12\3\0\13\12\6\0"+
+    "\3\12\2\0\2\12\1\320\1\12\3\0\13\12\6\0"+
     "\3\12\1\0\4\12\1\0\1\12\3\0\3\12\16\0"+
-    "\3\12\2\0\4\12\3\0\1\316\12\12\6\0\3\12"+
+    "\3\12\2\0\4\12\3\0\1\321\12\12\6\0\3\12"+
     "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
-    "\2\0\4\12\3\0\10\12\1\317\2\12\6\0\3\12"+
+    "\2\0\4\12\3\0\10\12\1\322\2\12\6\0\3\12"+
     "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
-    "\2\0\4\12\3\0\6\12\1\320\4\12\6\0\2\321"+
-    "\1\226\1\0\1\321\1\0\2\321\26\0\2\321\3\0"+
-    "\2\321\5\0\1\321\1\0\1\321\3\0\1\226\12\0"+
-    "\3\12\1\0\4\12\1\0\1\12\3\0\2\12\1\322"+
+    "\2\0\4\12\3\0\6\12\1\323\4\12\6\0\2\324"+
+    "\1\227\1\0\1\324\1\0\2\324\26\0\2\324\3\0"+
+    "\2\324\5\0\1\324\1\0\1\324\3\0\1\227\12\0"+
+    "\3\12\1\0\4\12\1\0\1\12\3\0\2\12\1\325"+
     "\16\0\3\12\2\0\4\12\3\0\13\12\6\0\3\12"+
     "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\3\12"+
-    "\2\0\4\12\3\0\10\12\1\323\2\12\6\0\3\12"+
+    "\2\0\4\12\3\0\10\12\1\326\2\12\6\0\3\12"+
     "\1\0\4\12\1\0\1\12\3\0\3\12\16\0\2\12"+
-    "\1\324\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\1\325\2\12\16\0\3\12"+
-    "\2\0\4\12\3\0\13\12\6\0\2\326\1\226\1\0"+
-    "\1\326\1\0\2\326\26\0\2\326\3\0\2\326\5\0"+
-    "\1\326\1\0\1\326\3\0\1\226\12\0\3\12\1\0"+
-    "\4\12\1\0\1\12\3\0\1\327\2\12\16\0\3\12"+
-    "\2\0\4\12\3\0\13\12\6\0\2\330\1\226\1\0"+
-    "\1\330\1\0\2\330\26\0\2\330\3\0\2\330\5\0"+
-    "\1\330\1\0\1\330\3\0\1\226\12\0\2\331\1\226"+
-    "\1\0\1\331\1\0\2\331\26\0\2\331\3\0\2\331"+
-    "\5\0\1\331\1\0\1\331\3\0\1\226\12\0\2\332"+
-    "\1\226\1\0\1\332\1\0\2\332\26\0\2\332\3\0"+
-    "\2\332\5\0\1\332\1\0\1\332\3\0\1\226\12\0"+
-    "\2\333\1\226\1\0\1\333\1\0\2\333\26\0\2\333"+
-    "\3\0\2\333\5\0\1\333\1\0\1\333\3\0\1\226"+
-    "\12\0\2\334\1\226\1\0\1\334\1\0\2\334\26\0"+
-    "\2\334\3\0\2\334\5\0\1\334\1\0\1\334\3\0"+
-    "\1\226\12\0\2\335\1\226\1\0\1\335\1\0\2\335"+
-    "\26\0\2\335\3\0\2\335\5\0\1\335\1\0\1\335"+
-    "\3\0\1\226\12\0\2\336\1\226\1\0\1\336\1\0"+
-    "\2\336\26\0\2\336\3\0\2\336\5\0\1\336\1\0"+
-    "\1\336\3\0\1\226\12\0\2\337\1\226\1\0\1\337"+
-    "\1\0\2\337\26\0\2\337\3\0\2\337\5\0\1\337"+
-    "\1\0\1\337\3\0\1\226\12\0\2\340\1\226\1\0"+
-    "\1\340\1\0\2\340\26\0\2\340\3\0\2\340\5\0"+
-    "\1\340\1\0\1\340\3\0\1\226\12\0\2\341\1\226"+
-    "\1\0\1\341\1\0\2\341\26\0\2\341\3\0\2\341"+
-    "\5\0\1\341\1\0\1\341\3\0\1\226\14\0\1\226"+
-    "\55\0\1\226\6\0";
+    "\1\327\2\0\4\12\3\0\13\12\6\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\1\330\2\12\16\0\3\12"+
+    "\2\0\4\12\3\0\13\12\6\0\2\331\1\227\1\0"+
+    "\1\331\1\0\2\331\26\0\2\331\3\0\2\331\5\0"+
+    "\1\331\1\0\1\331\3\0\1\227\12\0\3\12\1\0"+
+    "\4\12\1\0\1\12\3\0\1\332\2\12\16\0\3\12"+
+    "\2\0\4\12\3\0\13\12\6\0\2\333\1\227\1\0"+
+    "\1\333\1\0\2\333\26\0\2\333\3\0\2\333\5\0"+
+    "\1\333\1\0\1\333\3\0\1\227\12\0\2\334\1\227"+
+    "\1\0\1\334\1\0\2\334\26\0\2\334\3\0\2\334"+
+    "\5\0\1\334\1\0\1\334\3\0\1\227\12\0\2\335"+
+    "\1\227\1\0\1\335\1\0\2\335\26\0\2\335\3\0"+
+    "\2\335\5\0\1\335\1\0\1\335\3\0\1\227\12\0"+
+    "\2\336\1\227\1\0\1\336\1\0\2\336\26\0\2\336"+
+    "\3\0\2\336\5\0\1\336\1\0\1\336\3\0\1\227"+
+    "\12\0\2\337\1\227\1\0\1\337\1\0\2\337\26\0"+
+    "\2\337\3\0\2\337\5\0\1\337\1\0\1\337\3\0"+
+    "\1\227\12\0\2\340\1\227\1\0\1\340\1\0\2\340"+
+    "\26\0\2\340\3\0\2\340\5\0\1\340\1\0\1\340"+
+    "\3\0\1\227\12\0\2\341\1\227\1\0\1\341\1\0"+
+    "\2\341\26\0\2\341\3\0\2\341\5\0\1\341\1\0"+
+    "\1\341\3\0\1\227\12\0\2\342\1\227\1\0\1\342"+
+    "\1\0\2\342\26\0\2\342\3\0\2\342\5\0\1\342"+
+    "\1\0\1\342\3\0\1\227\12\0\2\343\1\227\1\0"+
+    "\1\343\1\0\2\343\26\0\2\343\3\0\2\343\5\0"+
+    "\1\343\1\0\1\343\3\0\1\227\12\0\2\344\1\227"+
+    "\1\0\1\344\1\0\2\344\26\0\2\344\3\0\2\344"+
+    "\5\0\1\344\1\0\1\344\3\0\1\227\14\0\1\227"+
+    "\55\0\1\227\6\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[9086];
+    int [] result = new int[9204];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -468,10 +472,10 @@ class LexicalScanner {
     "\3\1\2\11\3\1\3\11\11\1\1\11\1\0\1\11"+
     "\1\0\1\11\3\1\1\11\1\1\1\11\1\1\1\11"+
     "\2\0\2\11\4\1\12\11\34\1\3\11\3\1\1\0"+
-    "\40\1\1\11\103\1\10\0";
+    "\41\1\1\11\105\1\10\0";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[225];
+    int [] result = new int[228];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -548,17 +552,31 @@ class LexicalScanner {
 
   /* user code: */
     StringBuilder string = new StringBuilder();
+    Symbol currentSymbol = null;
 
     private Symbol symbol (TokenType tokenType)
     {
-        System.err.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
+        System.out.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
         return new Symbol (tokenType, yytext());
     }
 
     private Symbol symbol (TokenType tokenType, Object value)
     {
-        System.err.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
+        System.out.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
         return new Symbol (tokenType, value);
+    }
+
+    public Symbol currentToken() {
+            return currentSymbol;
+    }
+
+    public Symbol nextToken() {
+        try {
+            currentSymbol = next_token();
+            return currentSymbol;
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to get next token", e);
+        }
     }
 
 
@@ -932,7 +950,7 @@ class LexicalScanner {
             case YYINITIAL: {
               return symbol(new TokenType( Type.Other, "$"));
             }  // fall though
-            case 226: break;
+            case 229: break;
             default:
         return null;
         }
@@ -944,442 +962,447 @@ class LexicalScanner {
                                                                   "\" at line "+yyline+", column "+yycolumn);
             } 
             // fall through
-          case 89: break;
+          case 90: break;
           case 2: 
-            { return symbol(new TokenType( Type.Other, "whiteSpace"));
+            { /*return symbol(new TokenType( Type.Other, "whiteSpace"));*/
             } 
             // fall through
-          case 90: break;
+          case 91: break;
           case 3: 
             { return symbol(new TokenType( Type.Integer, "int_const"));
             } 
             // fall through
-          case 91: break;
+          case 92: break;
           case 4: 
             { return symbol(new TokenType( Type.Identifier, "id"));
             } 
             // fall through
-          case 92: break;
+          case 93: break;
           case 5: 
             { return symbol(new TokenType( Type.Other, "dot"));
             } 
             // fall through
-          case 93: break;
+          case 94: break;
           case 6: 
             { return symbol(new TokenType( Type.Other, "minus"));
             } 
             // fall through
-          case 94: break;
+          case 95: break;
           case 7: 
             { yybegin(STRING); string.setLength(0); string.append("\"");
             } 
             // fall through
-          case 95: break;
+          case 96: break;
           case 8: 
             { yybegin(CHARACTER); string.setLength(0); string.append("\'");
             } 
             // fall through
-          case 96: break;
+          case 97: break;
           case 9: 
             { return symbol(new TokenType( Type.Other, "opening_paren"));
             } 
             // fall through
-          case 97: break;
+          case 98: break;
           case 10: 
             { return symbol(new TokenType( Type.Other, "closing_paren"));
             } 
             // fall through
-          case 98: break;
+          case 99: break;
           case 11: 
             { return symbol(new TokenType( Type.Other, "opening_brace"));
             } 
             // fall through
-          case 99: break;
+          case 100: break;
           case 12: 
             { return symbol(new TokenType( Type.Other, "closing_brace"));
             } 
             // fall through
-          case 100: break;
+          case 101: break;
           case 13: 
             { return symbol(new TokenType( Type.Other, "add"));
             } 
             // fall through
-          case 101: break;
+          case 102: break;
           case 14: 
             { return symbol(new TokenType( Type.Other, "production"));
             } 
             // fall through
-          case 102: break;
+          case 103: break;
           case 15: 
             { return symbol(new TokenType( Type.Other, "division"));
             } 
             // fall through
-          case 103: break;
+          case 104: break;
           case 16: 
             { return symbol(new TokenType( Type.Other, "mod"));
             } 
             // fall through
-          case 104: break;
+          case 105: break;
           case 17: 
             { return symbol(new TokenType( Type.Other, "assignment"));
             } 
             // fall through
-          case 105: break;
+          case 106: break;
           case 18: 
             { return symbol(new TokenType( Type.Other, "less"));
             } 
             // fall through
-          case 106: break;
+          case 107: break;
           case 19: 
             { return symbol(new TokenType( Type.Other, "greater"));
             } 
             // fall through
-          case 107: break;
+          case 108: break;
           case 20: 
             { return symbol(new TokenType( Type.Other, "bitwise_negation"));
             } 
             // fall through
-          case 108: break;
+          case 109: break;
           case 21: 
             { return symbol(new TokenType( Type.Other, "arithmetic_and"));
             } 
             // fall through
-          case 109: break;
+          case 110: break;
           case 22: 
             { return symbol(new TokenType( Type.Other, "arithmetic_or"));
             } 
             // fall through
-          case 110: break;
+          case 111: break;
           case 23: 
             { return symbol(new TokenType( Type.Other, "arithmetic_xor"));
             } 
             // fall through
-          case 111: break;
+          case 112: break;
           case 24: 
             { return symbol(new TokenType( Type.Other, "comma"));
             } 
             // fall through
-          case 112: break;
+          case 113: break;
           case 25: 
             { return symbol(new TokenType( Type.Other, "colon"));
             } 
             // fall through
-          case 113: break;
+          case 114: break;
           case 26: 
             { return symbol(new TokenType( Type.Other, "semicolon"));
             } 
             // fall through
-          case 114: break;
+          case 115: break;
           case 27: 
             { string.append( yytext() );
             } 
             // fall through
-          case 115: break;
+          case 116: break;
           case 28: 
             { yybegin(YYINITIAL);  string.append("\""); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.String, "string_const"), temp.toString() );
             } 
             // fall through
-          case 116: break;
+          case 117: break;
           case 29: 
             { yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "char_const"), temp.toString() );
             } 
             // fall through
-          case 117: break;
+          case 118: break;
           case 30: 
             { yybegin(YYINITIAL); string.append("\n"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "single_line_comment"), temp.toString() );
             } 
             // fall through
-          case 118: break;
+          case 119: break;
           case 31: 
             { return symbol(new TokenType( Type.Real, "double_const"));
             } 
             // fall through
-          case 119: break;
+          case 120: break;
           case 32: 
             { return symbol(new TokenType( Type.Integer, "long_int_const"));
             } 
             // fall through
-          case 120: break;
+          case 121: break;
           case 33: 
             { return symbol(new TokenType( Type.Real, "float_const"));
             } 
             // fall through
-          case 121: break;
+          case 122: break;
           case 34: 
             { return symbol(new TokenType( Type.Other, "p_decreament"));
             } 
             // fall through
-          case 122: break;
+          case 123: break;
           case 35: 
             { return symbol(new TokenType( Type.Other, "subtraction_assignment"));
             } 
             // fall through
-          case 123: break;
+          case 124: break;
           case 36: 
             { return symbol(new TokenType( Type.Other, "p_increament"));
             } 
             // fall through
-          case 124: break;
+          case 125: break;
           case 37: 
             { return symbol(new TokenType( Type.Other, "addition_assignment"));
             } 
             // fall through
-          case 125: break;
+          case 126: break;
           case 38: 
             { return symbol(new TokenType( Type.Other, "multiplication_assignment"));
             } 
             // fall through
-          case 126: break;
+          case 127: break;
           case 39: 
             { return symbol(new TokenType( Type.Other, "division_assignment"));
             } 
             // fall through
-          case 127: break;
+          case 128: break;
           case 40: 
             { yybegin(MULTILINECOMMENT); string.setLength(0); string.append("/#");
             } 
             // fall through
-          case 128: break;
+          case 129: break;
           case 41: 
             { return symbol(new TokenType( Type.Other, "mod_assignment"));
             } 
             // fall through
-          case 129: break;
+          case 130: break;
           case 42: 
             { return symbol(new TokenType( Type.Other, "equal"));
             } 
             // fall through
-          case 130: break;
+          case 131: break;
           case 43: 
             { return symbol(new TokenType( Type.Other, "not_equal"));
             } 
             // fall through
-          case 131: break;
+          case 132: break;
           case 44: 
             { return symbol(new TokenType( Type.Other, "less_equal"));
             } 
             // fall through
-          case 132: break;
+          case 133: break;
           case 45: 
             { return symbol(new TokenType( Type.Other, "greater_equal"));
             } 
             // fall through
-          case 133: break;
+          case 134: break;
           case 46: 
             { return symbol(new TokenType( Type.Reserved, "logical_or"));
             } 
             // fall through
-          case 134: break;
+          case 135: break;
           case 47: 
             { return symbol(new TokenType( Type.Reserved, "of"));
             } 
             // fall through
-          case 135: break;
+          case 136: break;
           case 48: 
             { return symbol(new TokenType( Type.Reserved, "in"));
             } 
             // fall through
-          case 136: break;
+          case 137: break;
           case 49: 
             { return symbol(new TokenType( Type.Reserved, "if"));
             } 
             // fall through
-          case 137: break;
+          case 138: break;
           case 50: 
             { yybegin(SINGLELINECOMMENT); string.setLength(0); string.append("##");
             } 
             // fall through
-          case 138: break;
+          case 139: break;
           case 51: 
             { string.append( yytext() ); yybegin(YYINITIAL);  string.append("\'"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Char, "CHAR_CONST"), temp.toString() );
             } 
             // fall through
-          case 139: break;
+          case 140: break;
           case 52: 
             { yybegin(YYINITIAL);  string.append("/#"); StringBuilder temp = string ; string = new StringBuilder(); return symbol(new TokenType( Type.Comment, "mullti_line_comment"), temp.toString() );
             } 
             // fall through
-          case 140: break;
+          case 141: break;
           case 53: 
             { return symbol(new TokenType( Type.Integer, "hex_integer"));
             } 
             // fall through
-          case 141: break;
+          case 142: break;
           case 54: 
             { return symbol(new TokenType( Type.Real, "sci"));
             } 
             // fall through
-          case 142: break;
+          case 143: break;
           case 55: 
             { return symbol(new TokenType( Type.Reserved, "not"));
             } 
             // fall through
-          case 143: break;
+          case 144: break;
           case 56: 
             { return symbol(new TokenType( Type.Reserved, "new"));
             } 
             // fall through
-          case 144: break;
+          case 145: break;
           case 57: 
             { return symbol(new TokenType( Type.Reserved, "logical_and"));
             } 
             // fall through
-          case 145: break;
+          case 146: break;
           case 58: 
-            { return symbol(new TokenType( Type.Reserved, "closing_block"));
+            { return symbol(new TokenType( Type.Reserved, "end"));
             } 
             // fall through
-          case 146: break;
+          case 147: break;
           case 59: 
             { return symbol(new TokenType( Type.Reserved, "int"));
             } 
             // fall through
-          case 147: break;
+          case 148: break;
           case 60: 
             { return symbol(new TokenType( Type.Reserved, "for"));
             } 
             // fall through
-          case 148: break;
+          case 149: break;
           case 61: 
             { return symbol(new TokenType( Type.Reserved, "len"));
             } 
             // fall through
-          case 149: break;
+          case 150: break;
           case 62: 
             { return symbol(new TokenType( Type.Integer, "long_hex_integer"));
             } 
             // fall through
-          case 150: break;
+          case 151: break;
           case 63: 
             { return symbol(new TokenType( Type.Reserved, "true"));
             } 
             // fall through
-          case 151: break;
+          case 152: break;
           case 64: 
             { return symbol(new TokenType( Type.Reserved, "auto"));
             } 
             // fall through
-          case 152: break;
+          case 153: break;
           case 65: 
             { return symbol(new TokenType( Type.Reserved, "bool"));
             } 
             // fall through
-          case 153: break;
+          case 154: break;
           case 66: 
             { return symbol(new TokenType( Type.Reserved, "else"));
             } 
             // fall through
-          case 154: break;
+          case 155: break;
           case 67: 
             { return symbol(new TokenType( Type.Reserved, "case"));
             } 
             // fall through
-          case 155: break;
+          case 156: break;
           case 68: 
             { return symbol(new TokenType( Type.Reserved, "char"));
             } 
             // fall through
-          case 156: break;
+          case 157: break;
           case 69: 
             { return symbol(new TokenType( Type.Reserved, "void"));
             } 
             // fall through
-          case 157: break;
+          case 158: break;
           case 70: 
             { return symbol(new TokenType( Type.Reserved, "long"));
             } 
             // fall through
-          case 158: break;
+          case 159: break;
           case 71: 
             { return symbol(new TokenType( Type.Reserved, "continue"));
             } 
             // fall through
-          case 159: break;
+          case 160: break;
           case 72: 
-            { return symbol(new TokenType( Type.Reserved, "opening_block"));
+            { return symbol(new TokenType( Type.Reserved, "begin"));
             } 
             // fall through
-          case 160: break;
+          case 161: break;
           case 73: 
             { return symbol(new TokenType( Type.Reserved, "input"));
             } 
             // fall through
-          case 161: break;
+          case 162: break;
           case 74: 
             { return symbol(new TokenType( Type.Reserved, "false"));
             } 
             // fall through
-          case 162: break;
+          case 163: break;
           case 75: 
             { return symbol(new TokenType( Type.Reserved, "float"));
             } 
             // fall through
-          case 163: break;
+          case 164: break;
           case 76: 
             { return symbol(new TokenType( Type.Reserved, "until"));
             } 
             // fall through
-          case 164: break;
+          case 165: break;
           case 77: 
             { return symbol(new TokenType( Type.Reserved, "const"));
             } 
             // fall through
-          case 165: break;
-          case 78: 
-            { return symbol(new TokenType( Type.Reserved, "break"));
-            } 
-            // fall through
           case 166: break;
-          case 79: 
-            { return symbol(new TokenType( Type.Reserved, "record"));
+          case 78: 
+            { return symbol(new TokenType( Type.Reserved, "start"));
             } 
             // fall through
           case 167: break;
-          case 80: 
-            { return symbol(new TokenType( Type.Reserved, "repeat"));
+          case 79: 
+            { return symbol(new TokenType( Type.Reserved, "break"));
             } 
             // fall through
           case 168: break;
-          case 81: 
-            { return symbol(new TokenType( Type.Reserved, "double"));
+          case 80: 
+            { return symbol(new TokenType( Type.Reserved, "record"));
             } 
             // fall through
           case 169: break;
-          case 82: 
-            { return symbol(new TokenType( Type.Reserved, "string"));
+          case 81: 
+            { return symbol(new TokenType( Type.Reserved, "repeat"));
             } 
             // fall through
           case 170: break;
-          case 83: 
-            { return symbol(new TokenType( Type.Reserved, "sizeof"));
+          case 82: 
+            { return symbol(new TokenType( Type.Reserved, "double"));
             } 
             // fall through
           case 171: break;
-          case 84: 
-            { return symbol(new TokenType( Type.Reserved, "switch"));
+          case 83: 
+            { return symbol(new TokenType( Type.Reserved, "string"));
             } 
             // fall through
           case 172: break;
-          case 85: 
-            { return symbol(new TokenType( Type.Reserved, "default"));
+          case 84: 
+            { return symbol(new TokenType( Type.Reserved, "sizeof"));
             } 
             // fall through
           case 173: break;
-          case 86: 
-            { return symbol(new TokenType( Type.Reserved, "foreach"));
+          case 85: 
+            { return symbol(new TokenType( Type.Reserved, "switch"));
             } 
             // fall through
           case 174: break;
-          case 87: 
-            { return symbol(new TokenType( Type.Reserved, "println"));
+          case 86: 
+            { return symbol(new TokenType( Type.Reserved, "default"));
             } 
             // fall through
           case 175: break;
-          case 88: 
-            { return symbol(new TokenType( Type.Reserved, "function"));
+          case 87: 
+            { return symbol(new TokenType( Type.Reserved, "foreach"));
             } 
             // fall through
           case 176: break;
+          case 88: 
+            { return symbol(new TokenType( Type.Reserved, "println"));
+            } 
+            // fall through
+          case 177: break;
+          case 89: 
+            { return symbol(new TokenType( Type.Reserved, "function"));
+            } 
+            // fall through
+          case 178: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

@@ -1,0 +1,11 @@
+int test1 = 5 * 3;
+float koof = 3.5;
+int test2;
+
+function void start()
+begin
+    test2 = 34;
+    int test3 = 89;
+    int test4;
+    test4 = 7;
+end

@@ -7,21 +7,36 @@ import java.io.IOException;
 %column
 %unicode
 %function next_token
+%implements Lexical
 %type Symbol
 
 %{
     StringBuilder string = new StringBuilder();
+    Symbol currentSymbol = null;
 
     private Symbol symbol (TokenType tokenType)
     {
-        System.err.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
+        System.out.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
         return new Symbol (tokenType, yytext());
     }
 
     private Symbol symbol (TokenType tokenType, Object value)
     {
-        System.err.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
+        System.out.println("symbol type " + tokenType + " \"" + yytext() +  "\"");
         return new Symbol (tokenType, value);
+    }
+
+    public Symbol currentToken() {
+            return currentSymbol;
+    }
+
+    public Symbol nextToken() {
+        try {
+            currentSymbol = next_token();
+            return currentSymbol;
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to get next token", e);
+        }
     }
 %}
 
@@ -57,7 +72,7 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
 %%
 /* lexical rules */
 <YYINITIAL> {
-     \"                             { yybegin(STRING); string.setLength(0); string.append("\""); }
+    "\""                            { yybegin(STRING); string.setLength(0); string.append("\""); }
     "\'"                            { yybegin(CHARACTER); string.setLength(0); string.append("\'"); }
     "("                             { return symbol(new TokenType( Type.Other, "opening_paren")); }
     ")"                             { return symbol(new TokenType( Type.Other, "closing_paren")); }
@@ -86,8 +101,8 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     "*="                            { return symbol(new TokenType( Type.Other, "multiplication_assignment")); }
     "/="                            { return symbol(new TokenType( Type.Other, "division_assignment")); }
     "%="                            { return symbol(new TokenType( Type.Other, "mod_assignment")); }
-    "begin"                         { return symbol(new TokenType( Type.Reserved, "opening_block")); }
-    "end"                           { return symbol(new TokenType( Type.Reserved, "closing_block")); }
+    "begin"                         { return symbol(new TokenType( Type.Reserved, "begin")); }
+    "end"                           { return symbol(new TokenType( Type.Reserved, "end")); }
     "."                             { return symbol(new TokenType( Type.Other, "dot")); }
     ","                             { return symbol(new TokenType( Type.Other, "comma")); }
     ":"                             { return symbol(new TokenType( Type.Other, "colon")); }
@@ -129,6 +144,7 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     "not"                           { return symbol(new TokenType( Type.Reserved, "not")); }
     "println"                       { return symbol(new TokenType( Type.Reserved, "println")); }
     "input"                         { return symbol(new TokenType( Type.Reserved, "input")); }
+    "start"                         { return symbol(new TokenType( Type.Reserved, "start")); }
 
 
     "/#"                            { yybegin(MULTILINECOMMENT); string.setLength(0); string.append("/#"); }
@@ -143,7 +159,7 @@ CharCharacter = [^\r\n\'\\]|\\\\|\\n|\\r|\\'|\\t
     {HexLongLiteral}                { return symbol(new TokenType( Type.Integer, "long_hex_integer")); }
     {ScientificFormLiteral}         { return symbol(new TokenType( Type.Real, "sci")); }
 
-    {WhiteSpace}+                   { return symbol(new TokenType( Type.Other, "whiteSpace")); }
+    {WhiteSpace}+                   { /*return symbol(new TokenType( Type.Other, "whiteSpace"));*/ }
 
     [^]                             { throw new RuntimeException("Illegal character \""+yytext()+
                                                                   "\" at line "+yyline+", column "+yycolumn); }
