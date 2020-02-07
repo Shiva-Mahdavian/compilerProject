@@ -1,0 +1,11 @@
+bool btest1 = true;
+bool btest2 = false;
+
+function void start()
+begin
+    test2 = 34 >= 32;
+    bool btest3 = btest1 and btest2;
+    bool btest4 = btest1 or btest2;
+    bool btest4 = btest1 or btest2 and btest3;
+    test5 = (5 > 3) and (4 > 3) or 6==5 and 7 != 5;
+end

@@ -21,7 +21,9 @@ begin
     int test4;
     test4 = 7;
     test2 = ++test4;
+    test2 = --test4;
     test2 = test4 ++;
+    test2 = test4--;
     test2 = -45;
     test4 = +3;
 end

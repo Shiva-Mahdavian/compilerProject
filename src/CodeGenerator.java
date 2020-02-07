@@ -25,25 +25,25 @@ public class CodeGenerator {
         switch (sem) {
             case "pushBooleanConst":
                 semanticStack.push(new BoolConst((String) lexical.currentToken().getValue()));
-                break;
+            break;
             case "pushLongConst":
                 semanticStack.push(new LongConst((String) lexical.currentToken().getValue(), RADIX_DECIMAL));
-                break;
+            break;
             case "pushLongHexConst":
                 semanticStack.push(new LongConst((String) lexical.currentToken().getValue(), RADIX_HEX));
-                break;
+            break;
             case "pushFloatConst":
                 semanticStack.push(new FloatConst((String) lexical.currentToken().getValue()));
-                break;
+            break;
             case "pushIntegerConst":
                 semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue(), RADIX_DECIMAL));
-                break;
+            break;
             case "pushIntegerHexConst":
                 semanticStack.push(new IntegerConst((String) lexical.currentToken().getValue(), RADIX_HEX));
-                break;
+            break;
             case "pushDoubleConst":
                 semanticStack.push(new DoubleConst((String) lexical.currentToken().getValue()));
-                break;
+            break;
             case "exprPlus": {
                 Expression second = (Expression) semanticStack.pop();
                 Expression first = (Expression) semanticStack.pop();
@@ -85,23 +85,91 @@ public class CodeGenerator {
             }
             break;
             case "exprPreDecrement": {
+                System.out.println("pre dec");
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new PreDecrement(first));
             }
             break;
             case "exprPostDecrement": {
+                System.out.println("post dec");
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new PostDecrement(first));
             }
             break;
             case "exprPreIncrement": {
+                System.out.println("pre inc");
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new PreIncrement(first));
             }
             break;
             case "exprPostIncrement": {
+                System.out.println("post inc");
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new PostIncrement(first));
+            }
+            break;
+            case "exprBitwiseNegation": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new BitwiseNegation(first));
+            }
+            break;
+            case "exprNot": {
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new Not(first));
+            }
+            break;
+            case "exprNotEqual": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new NotEqual(first, second));
+            }
+            break;
+            case "exprEqual": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new Equal(first, second));
+            }
+            break;
+            case "exprLessEqual": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new LessEqual(first, second));
+            }
+            break;
+            case "exprGreaterEqual": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new GreaterEqual(first, second));
+            }
+            break;
+            case "exprGreater": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new Greater(first, second));
+            }
+            break;
+            case "exprLess": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new Less(first, second));
+            }
+            break;
+            case "exprArithmeticAnd": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new ArithmeticAnd(first, second));
+            }
+            break;
+            case "exprArithmeticOr": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new ArithmeticOr(first, second));
+            }
+            break;
+            case "exprArithmeticXor": {
+                Expression second = (Expression) semanticStack.pop();
+                Expression first = (Expression) semanticStack.pop();
+                semanticStack.push(new ArithmeticXor(first, second));
             }
             break;
             default:
