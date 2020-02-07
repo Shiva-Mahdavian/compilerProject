@@ -2,6 +2,8 @@ package ast.expression.unary;
 
 
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class Negative extends UnaryExpression {
 
@@ -10,8 +12,8 @@ public class Negative extends UnaryExpression {
     }
 
     @Override
-    public void codegen() {
-        getOperand().codegen();
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("negative");
+        getOperand().codegen(cw, mv);
     }
 }

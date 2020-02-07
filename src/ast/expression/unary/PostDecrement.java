@@ -1,6 +1,8 @@
 package ast.expression.unary;
 
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class PostDecrement extends UnaryExpression  {
     public PostDecrement(Expression operand)
@@ -9,8 +11,8 @@ public class PostDecrement extends UnaryExpression  {
     }
 
     @Override
-    public void codegen() {
-        getOperand().codegen();
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("postDecrement");
+        getOperand().codegen(cw, mv);
     }
 }

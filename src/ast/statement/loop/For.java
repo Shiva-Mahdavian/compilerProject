@@ -3,6 +3,8 @@ package ast.statement.loop;
 import ast.expression.Expression;
 import ast.statement.Statement;
 import ast.statement.assignment.Assignment;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class For implements Statement {
     private Assignment first_step;
@@ -18,12 +20,14 @@ public class For implements Statement {
 
 
     @Override
-    public void codegen() {
-        if (first_step != null)
-            first_step.codegen();
-        condition_expression.codegen();
-        if (step_expression != null)
-            step_expression.codegen();
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("for");
+        if (first_step != null) {
+            first_step.codegen(cw, mv);
+        }
+        condition_expression.codegen(cw, mv);
+        if (step_expression != null) {
+            step_expression.codegen(cw, mv);
+        }
     }
 }

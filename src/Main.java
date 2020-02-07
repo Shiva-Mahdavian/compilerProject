@@ -1,4 +1,7 @@
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 import java.io.*;
 
@@ -14,10 +17,10 @@ public class Main {
         }
         LexicalScanner lexicalScanner = new LexicalScanner(fileReader);
         CodeGenerator codeGenerator = new CodeGenerator(lexicalScanner);
-        parseInput(lexicalScanner, codeGenerator);
+        parseInput(lexicalScanner, codeGenerator, outputStream);
     }
 
-    private static void parseInput(LexicalScanner lexicalScanner, CodeGenerator codeGenerator) {
+    private static void parseInput(LexicalScanner lexicalScanner, CodeGenerator codeGenerator, OutputStream fos) {
         Parser parser = new Parser(lexicalScanner, codeGenerator, "src/table.npt");
         try {
             // Parse given file
@@ -25,7 +28,32 @@ public class Main {
             // Get Root of AST
             Expression result = codeGenerator.getResult();
             // Call AST Root function
-            result.codegen();
+//
+
+
+            // Create a Test class to put expression java bytecode inside it.
+            // In java, every code must be put inside a class.
+            ClassWriter classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+            classWriter.visit(Opcodes.V1_8, Opcodes.ACC_PUBLIC | Opcodes.ACC_SUPER, "Test", null, "java/lang/Object", null);
+
+            // Create constructor of Test class to call it's super class.
+            // Every class has a default constructor which call super constructor. (In this example, Object constructor)
+            MethodVisitor methodVisitor = classWriter.visitMethod(Opcodes.ACC_PUBLIC, "<init>", "()V", null, null);
+            methodVisitor.visitCode();
+            methodVisitor.visitVarInsn(Opcodes.ALOAD, 0);
+            methodVisitor.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
+            methodVisitor.visitInsn(Opcodes.RETURN);
+            methodVisitor.visitMaxs(0, 0);
+            methodVisitor.visitEnd();
+
+            result.codegen(classWriter, methodVisitor);
+
+            try {
+                fos.write(classWriter.toByteArray());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("Code compiled successfully");
         } catch (Exception e) {
             e.printStackTrace();

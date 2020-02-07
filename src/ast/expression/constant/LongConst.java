@@ -1,6 +1,8 @@
 package ast.expression.constant;
 
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class LongConst implements Expression {
     private long value;
@@ -16,7 +18,7 @@ public class LongConst implements Expression {
     }
 
     @Override
-    public void codegen() {
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("long const value " + value);
     }
 }

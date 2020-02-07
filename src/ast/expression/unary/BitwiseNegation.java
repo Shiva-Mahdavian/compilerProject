@@ -1,6 +1,8 @@
 package ast.expression.unary;
 
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class BitwiseNegation extends UnaryExpression {
 
@@ -9,8 +11,8 @@ public class BitwiseNegation extends UnaryExpression {
     }
 
     @Override
-    public void codegen() {
-        getOperand().codegen();
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("bitwise Negation");
+        getOperand().codegen(cw, mv);
     }
 }

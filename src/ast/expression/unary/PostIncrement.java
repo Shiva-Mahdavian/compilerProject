@@ -2,6 +2,8 @@ package ast.expression.unary;
 
 
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class PostIncrement extends UnaryExpression {
     public PostIncrement(Expression operand) {
@@ -9,8 +11,8 @@ public class PostIncrement extends UnaryExpression {
     }
 
     @Override
-    public void codegen() {
-        getOperand().codegen();
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("postIncrement");
+        getOperand().codegen(cw, mv);
     }
 }

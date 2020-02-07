@@ -1,3 +1,6 @@
+import ast.BlockPart;
+import ast.Program;
+import ast.Start;
 import ast.expression.Expression;
 import ast.expression.binary.*;
 import ast.expression.constant.*;
@@ -13,10 +16,13 @@ public class CodeGenerator {
     public static final int RADIX_DECIMAL = 10;
     private Lexical lexical;
     private Deque<Object> semanticStack;
+    private Program program;
 
     public CodeGenerator(Lexical lexical) {
         this.lexical = lexical;
         semanticStack = new ArrayDeque<>();
+        program = new Program();
+        semanticStack.push(program);
     }
 
     public Expression getResult() {
@@ -200,6 +206,17 @@ public class CodeGenerator {
                 Expression condition = (Expression) semanticStack.pop();
                 Assignment first_step = (Assignment) semanticStack.pop();
                 semanticStack.push(new For(first_step, condition, null));
+            }
+            break;
+            case "initStart": {
+                program.initStart(semanticStack.size());
+            }
+            break;
+            case "finishStart": {
+                while (semanticStack.size() > program.getStart().getInitialSemanticSize()) {
+                    BlockPart bp = (BlockPart) semanticStack.pop();
+                    program.getStart().addToBlockParts(bp);
+                }
             }
             break;
             default:

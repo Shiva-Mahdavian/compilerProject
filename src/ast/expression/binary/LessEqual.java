@@ -1,6 +1,8 @@
 package ast.expression.binary;
 
 import ast.expression.Expression;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class LessEqual extends BinaryExpression {
     public LessEqual(Expression firstOp, Expression secondOp) {
@@ -8,9 +10,9 @@ public class LessEqual extends BinaryExpression {
     }
 
     @Override
-    public void codegen() {
-        getFirstOperand().codegen();
-        getSecondOperand().codegen();
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("Less equal");
+        getFirstOperand().codegen(cw, mv);
+        getSecondOperand().codegen(cw, mv);
     }
 }

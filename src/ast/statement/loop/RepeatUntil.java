@@ -2,6 +2,8 @@ package ast.statement.loop;
 
 import ast.expression.Expression;
 import ast.statement.Statement;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
 
 public class RepeatUntil implements Statement {
     //    private Block block;
@@ -12,10 +14,10 @@ public class RepeatUntil implements Statement {
     }
 
     @Override
-    public void codegen() {
-        condition.codegen();
-
+    public void codegen(ClassWriter cw, MethodVisitor mv) {
         System.out.println("repeat");
+        condition.codegen(cw, mv);
+
     }
 }
 
