@@ -1,4 +1,21 @@
 package ast.statement.loop;
 
-public class RepeatUntil {
+import ast.expression.Expression;
+import ast.statement.Statement;
+
+public class RepeatUntil implements Statement {
+    //    private Block block;
+    private Expression condition;
+
+    public RepeatUntil(Expression condition) {
+        this.condition = condition;
+    }
+
+    @Override
+    public void codegen() {
+        condition.codegen();
+
+        System.out.println("repeat");
+    }
 }
+

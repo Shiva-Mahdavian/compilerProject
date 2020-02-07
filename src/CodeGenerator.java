@@ -2,6 +2,8 @@ import ast.expression.Expression;
 import ast.expression.binary.*;
 import ast.expression.constant.*;
 import ast.expression.unary.*;
+import ast.statement.assignment.Assignment;
+import ast.statement.loop.For;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -170,6 +172,34 @@ public class CodeGenerator {
                 Expression second = (Expression) semanticStack.pop();
                 Expression first = (Expression) semanticStack.pop();
                 semanticStack.push(new ArithmeticXor(first, second));
+            }
+            break;
+            case "for": {
+                //Block block = //TODO
+                Expression step = (Expression) semanticStack.pop();
+                Expression condition = (Expression) semanticStack.pop();
+                Assignment first_step = (Assignment) semanticStack.pop();
+                semanticStack.push(new For(first_step, condition, step));
+            }
+            break;
+            case "forWithNoAdditional": {
+                //Block block = //TODO
+                Expression condition = (Expression) semanticStack.pop();
+                semanticStack.push(new For(null, condition, null));
+            }
+            break;
+            case "forWithStep": {
+                //Block block = //TODO
+                Expression step = (Expression) semanticStack.pop();
+                Expression condition = (Expression) semanticStack.pop();
+                semanticStack.push(new For(null, condition, step));
+            }
+            break;
+            case "forWithAssignment": {
+                //Block block = //TODO
+                Expression condition = (Expression) semanticStack.pop();
+                Assignment first_step = (Assignment) semanticStack.pop();
+                semanticStack.push(new For(first_step, condition, null));
             }
             break;
             default:

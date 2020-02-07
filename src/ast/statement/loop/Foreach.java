@@ -1,4 +1,17 @@
 package ast.statement.loop;
 
-public class Foreach {
+import ast.statement.Statement;
+
+public class Foreach implements Statement {
+
+
+    public Foreach() {
+
+    }
+
+
+    @Override
+    public void codegen() {
+
+    }
 }

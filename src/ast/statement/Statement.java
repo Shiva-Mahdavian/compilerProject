@@ -1,6 +1,6 @@
 package ast.statement;
 
-import ast.AST;
+import ast.BlockPart;
 
-public interface Statement extends AST {
+public interface Statement extends BlockPart {
 }
