@@ -8,6 +8,7 @@ import ast.expression.constant.*;
 import ast.expression.unary.*;
 import ast.statement.assignment.Assignment;
 import ast.statement.loop.For;
+import ast.varDCL.LocalVarDCL;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -218,6 +219,29 @@ public class CodeGenerator {
                     BlockPart bp = (BlockPart) semanticStack.pop();
                     program.getStart().addToBlockParts(bp);
                 }
+            }
+            break;
+            case "pushType": {
+                semanticStack.push((String) lexical.currentToken().getValue());
+            }
+            break;
+            case "pushID": {
+                semanticStack.push((String) lexical.currentToken().getValue());
+            }
+            break;
+            case "createVar": {
+                System.out.println("create var");
+                String varName = (String) semanticStack.pop();
+                String varType = (String) semanticStack.pop();
+                semanticStack.push(new LocalVarDCL(varType, varName));
+            }
+            break;
+            case "createVarWait": {
+                System.out.println("in create var wait");
+                String varName = (String) semanticStack.pop();
+                String varType = (String) semanticStack.pop();
+                semanticStack.push(new LocalVarDCL(varType, varName));
+                semanticStack.push(varType);
             }
             break;
             default:

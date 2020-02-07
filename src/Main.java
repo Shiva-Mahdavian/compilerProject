@@ -1,3 +1,4 @@
+import ast.ASMUtils;
 import ast.AST;
 import ast.expression.Expression;
 import org.objectweb.asm.ClassWriter;
@@ -8,6 +9,7 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args){
+        ASMUtils.init();
         FileReader fileReader = null;
         OutputStream outputStream = null;
         try {
